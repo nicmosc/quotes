@@ -57,6 +57,7 @@ module.exports = {
     'no-undef': 'off',
     'no-unused-vars': 'off',
     'no-redeclare': 'off',
+    'no-useless-constructor': 'off',
 
     // Typescript
     '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
