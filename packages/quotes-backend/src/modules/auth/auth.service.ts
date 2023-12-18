@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { User } from '@quotes/schema';
 
-import { User } from '../users/interfaces';
 import { UsersService } from '../users/users.service';
 
 @Injectable()

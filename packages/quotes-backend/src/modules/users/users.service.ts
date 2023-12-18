@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
+// For simplicity, our model matches the API interface
+import { User, User as UserModel } from '@quotes/schema';
 
-import { User, User as UserModel } from './interfaces';
+// This should normally be within the repository data
 import { users } from './mock';
 
 @Injectable()

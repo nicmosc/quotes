@@ -1,8 +1,11 @@
+export interface Env {
+  readonly PORT: string;
+  readonly QUOTES_SERVICE_URL: string;
+}
+
 declare global {
   namespace NodeJS {
-    interface ProcessEnv {
-      readonly PORT: string;
-    }
+    interface ProcessEnv extends Env {}
   }
 }
 
