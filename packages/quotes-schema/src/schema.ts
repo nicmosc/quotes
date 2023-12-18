@@ -1,13 +1,54 @@
+// User contract
+export interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
+export interface UserRequest {
+  id: User['id'];
+}
+
+export interface UserResponse {
+  data: User;
+}
+
+export type GetUser = (args: UserRequest) => UserResponse;
+
+// Quote contract
+
 export interface Quote {
-  _id: string;
+  id: string;
   // The quotation text
   content: string;
   // The full name of the author
   author: string;
-  // The `slug` of the quote author
-  authorSlug: string;
-  // The length of quote (number of characters)
-  length: number;
-  // An array of tag names for this quote
-  tags: string[];
 }
+
+export interface QuoteRequest {
+  // Comma separated tags
+  tags?: string;
+}
+
+export interface QuoteResponse {
+  data: Quote;
+}
+
+export type GetQuote = (args: QuoteRequest) => QuoteResponse;
+
+// Tag contract
+
+export interface Tag {
+  id: string;
+  name: string;
+}
+
+export interface TagsRequest {}
+
+export interface TagsResponse {
+  data: Tag[];
+}
+
+export type GetTags = (args: TagsRequest) => TagsResponse;
