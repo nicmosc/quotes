@@ -7,6 +7,8 @@
     "build:backend": "npx nx build @quotes/backend",
     "test:backend": "npx nx test @quotes/backend",
     "start:frontend": "npx nx start @quotes/frontend",
+    "build:frontend": "npx nx build @quotes/frontend",
+    "start": "stmux -M -e ERROR -- [ 'npm run start:frontend' .. 'npm run start:backend' ]",
     "lint": "eslint --ext=jsx,js,ts,tsx packages --fix",
     "ts:check": "tsc --noEmit -p ./tsconfig.base.json",
     "prepare": "husky install"
@@ -46,6 +48,7 @@
     "joi": "^17.11.0",
     "lint-staged": "^15.0.2",
     "nx": "17.0.3",
+    "postcss": "^8.4.32",
     "prettier": "^3.0.0",
     "query-string": "^7.1.3",
     "source-map-support": "^0.5.21",
