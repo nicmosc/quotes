@@ -25,6 +25,7 @@ export interface Quote {
   content: string;
   // The full name of the author
   author: string;
+  tags?: string[];
 }
 
 export interface QuoteRequest {

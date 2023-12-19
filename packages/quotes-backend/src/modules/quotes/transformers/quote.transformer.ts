@@ -11,6 +11,7 @@ function mapQuoteDataToQuote(quoteData: QuoteData): Quote {
     id: quoteData._id,
     content: quoteData.content,
     author: quoteData.author,
+    tags: quoteData.tags,
   };
 }
 

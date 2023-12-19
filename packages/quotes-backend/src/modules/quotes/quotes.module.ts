@@ -1,5 +1,6 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 
 import { ErrorsInterceptor } from '../../interceptors';
@@ -7,7 +8,7 @@ import { QuotesController } from './quotes.controller';
 import { QuotesService } from './quotes.service';
 
 @Module({
-  imports: [HttpModule],
+  imports: [HttpModule, ConfigModule],
   providers: [
     QuotesService,
     {
@@ -18,5 +19,6 @@ import { QuotesService } from './quotes.service';
     },
   ],
   controllers: [QuotesController],
+  exports: [QuotesService],
 })
 export class QuotesModule {}
