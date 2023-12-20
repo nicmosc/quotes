@@ -8,5 +8,5 @@ module.exports = {
     '../../node_modules/daisyui/dist/**/*.js',
     '../../node_modules/react-daisyui/dist/**/*.js',
   ],
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'), require('@tailwindcss/typography')],
 };
