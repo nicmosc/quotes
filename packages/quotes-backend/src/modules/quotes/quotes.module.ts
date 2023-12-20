@@ -11,12 +11,12 @@ import { QuotesService } from './quotes.service';
   imports: [HttpModule, ConfigModule],
   providers: [
     QuotesService,
-    {
-      provide: APP_INTERCEPTOR,
-      // We set up a custom interceptor and throw a Bad Gateway error since
-      // failures will most likely be caused by the third party quotes service
-      useClass: ErrorsInterceptor,
-    },
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   // We set up a custom interceptor and throw a Bad Gateway error since
+    //   // failures will most likely be caused by the third party quotes service
+    //   useClass: ErrorsInterceptor,
+    // },
   ],
   controllers: [QuotesController],
   exports: [QuotesService],

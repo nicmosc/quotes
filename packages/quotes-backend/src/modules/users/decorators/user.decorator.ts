@@ -1,4 +1,6 @@
-import { createParamDecorator } from '@nestjs/common';
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 
-// eslint-disable-next-line
-export const CurrentUser = createParamDecorator((data, [root, args, ctx, info]) => ctx.req.user);
+export const CurrentUser = createParamDecorator((data: unknown, ctx: ExecutionContext) => {
+  const request = ctx.switchToHttp().getRequest();
+  return request.user;
+});

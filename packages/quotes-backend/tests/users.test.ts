@@ -33,7 +33,6 @@ describe('Users', () => {
           firstName: expect.any(String),
           lastName: expect.any(String),
           email: expect.any(String),
-          password: expect.any(String),
         },
       });
     });

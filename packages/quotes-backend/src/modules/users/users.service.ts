@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 // For simplicity, our model matches the API interface
-import { User, User as UserModel } from '@quotes/schema';
+import { User } from '@quotes/schema';
 
 // This should normally be within the repository data
-import { users } from './mock';
+import { UserModel, users } from './mock';
 
 @Injectable()
 export class UsersService {
@@ -17,13 +17,22 @@ export class UsersService {
     return this.users;
   }
 
-  findOneById(id: string): User | undefined {
-    return this.users.find((user) => user.id === id);
+  findOneById(id: string, withPw: boolean = false): UserModel | User | undefined {
+    // In a production env we would use a repository to get the DB data
+    const user = this.users.find((user) => user.id === id);
+    if (user != null) {
+      const { password, ...rest } = user;
+      return withPw ? user : rest;
+    }
   }
 
-  findOneByEmail(email: string): User | undefined {
+  findOneByEmail(email: string, withPw: boolean = false): UserModel | User | undefined {
     // In a production env we would use a repository to get the DB data
-    return this.users.find((user) => user.email === email);
+    const user = this.users.find((user) => user.email === email);
+    if (user != null) {
+      const { password, ...rest } = user;
+      return withPw ? user : rest;
+    }
   }
 
   create(userDto: any) {}
