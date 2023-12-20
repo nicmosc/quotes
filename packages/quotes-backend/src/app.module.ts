@@ -24,6 +24,6 @@ import { UsersModule } from './modules/users';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(DelayerMiddleware({ delay: 2000 })).forRoutes('/auth/login');
-    consumer.apply(LoggerMiddleware).forRoutes('quotes');
+    consumer.apply(LoggerMiddleware);
   }
 }

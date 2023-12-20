@@ -26,7 +26,7 @@ export class AuthService {
     if (existingUser != null) {
       const payload = { email: user.email, sub: user.password };
       return {
-        access_token: this.jwtService.sign(payload),
+        token: this.jwtService.sign(payload),
       };
     } else {
       throw new NotFoundException();
