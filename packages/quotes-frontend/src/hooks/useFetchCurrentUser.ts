@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 
 import { buildAPIUrl, useAuthToken } from '../providers';
 
-const FIVE_MINUTES = 5 * 1000 * 60;
+const ONE_HOUR = 60 * 1000 * 60;
 
 export const useFetchCurrentUser = () => {
   const { value } = useAuthToken();
@@ -22,7 +22,11 @@ export const useFetchCurrentUser = () => {
       return await response.json();
     },
     {
-      staleTime: FIVE_MINUTES,
+      /**
+       * By matching the stale time to the token expiration, we won't refetch
+       * if the token hasn't changed and the stale time has not elapsed
+       */
+      staleTime: ONE_HOUR,
     },
   );
 };

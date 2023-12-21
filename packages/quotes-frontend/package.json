@@ -9,6 +9,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@phosphor-icons/react": "^2.0.15",
         "@quotes/schema": "^1.0.0",
         "react": "^18.2.0",
         "react-daisyui": "^5.0.0",
