@@ -16,11 +16,11 @@ export class QuotesService {
 
   private serviceUrl = this.configService.get<string>('QUOTES_SERVICE_URL')!;
 
-  async getRandomQuote(filter: string[] = []) {
+  async getRandomQuote(filter: string[] = [], maxLength?: number) {
     const url = qs.stringifyUrl(
       {
         url: this.serviceUrl + '/random',
-        query: { tags: filter },
+        query: { tags: filter, maxLength },
       },
       { arrayFormatSeparator: '|', arrayFormat: 'separator' },
     );

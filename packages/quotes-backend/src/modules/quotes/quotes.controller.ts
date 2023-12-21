@@ -12,7 +12,7 @@ export class QuotesController {
   @HttpCode(HttpStatus.OK)
   @Get('random')
   async random(@Query() query: QuoteRequest): Promise<ReturnType<GetQuote>> {
-    return this.quotesService.getRandomQuote(query.tags?.split(','));
+    return this.quotesService.getRandomQuote(query.tags?.split(','), query.maxLength);
   }
 
   @HttpCode(HttpStatus.OK)

@@ -42,6 +42,7 @@ export interface Quote {
 export interface QuoteRequest {
   // Comma separated tags
   tags?: string;
+  maxLength?: number;
 }
 
 export interface QuoteResponse {
