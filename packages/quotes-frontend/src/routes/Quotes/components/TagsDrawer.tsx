@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Drawer, Input, Menu } from 'react-daisyui';
 
 import { useFetchTags } from '../../../hooks';
@@ -7,10 +7,17 @@ interface TagsDrawerProps {
   isOpen: boolean;
   onClickClose: VoidFunction;
   trigger: ReactNode;
+  onChange: (value: string) => void;
 }
 
-export const TagsDrawer = ({ isOpen, onClickClose, trigger }: TagsDrawerProps) => {
+export const TagsDrawer = ({ isOpen, onClickClose, trigger, onChange }: TagsDrawerProps) => {
   const { data } = useFetchTags();
+  const [search, setSearch] = useState('');
+
+  const filtered = data?.data.filter((tag) =>
+    tag.name.toLowerCase().includes(search.toLowerCase()),
+  );
+
   return (
     <Drawer
       open={isOpen}
@@ -27,10 +34,17 @@ export const TagsDrawer = ({ isOpen, onClickClose, trigger }: TagsDrawerProps) =
               className="mt-5 rounded-full w-full"
               size="md"
               bordered={false}
+              value={search}
+              onChange={(v) => setSearch(v.target.value)}
             />
           </div>
-          {data?.data.map((tag) => (
+          {filtered?.map((tag) => (
             <div
+              onClick={() => {
+                onChange(tag.name);
+                setSearch('');
+                onClickClose();
+              }}
               className="prose prose-2xl my-5 font-bold text-neutral-400 hover:text-black hover:cursor-pointer"
               key={tag.id}>
               {tag.name}

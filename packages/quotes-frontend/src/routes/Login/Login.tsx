@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Input, Toast } from 'react-daisyui';
+import { Alert, Button, Input, Toast } from 'react-daisyui';
 import { useNavigate } from 'react-router';
 
 import { useLogin } from '../../hooks';
@@ -11,6 +11,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({ email: '', password: '' });
 
+  // TODO form validation
   const onChange = (key: keyof typeof values, value: string) => {
     setValues({ ...values, [key]: value });
   };
@@ -26,7 +27,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="p-4 flex flex-col gap-2">
+    <div className="p-4 flex flex-col justify-center gap-2">
       <h1 className="prose prose-xl">Login</h1>
       <Input
         color="ghost"
@@ -42,10 +43,18 @@ export const Login = () => {
         onChange={(v) => onChange('password', v.target.value)}
         type="password"
       />
-      <Button color="primary" onClick={onLogin} loading={isLoading}>
+      <Button
+        disabled={values.email.length === 0 || values.password.length === 0}
+        color="primary"
+        onClick={onLogin}
+        loading={isLoading}>
         Enter
       </Button>
-      {error != null && <Toast>{error.message}</Toast>}
+      {error != null && (
+        <Toast>
+          <Alert status="error">{error.message}</Alert>
+        </Toast>
+      )}
     </div>
   );
 };

@@ -4,16 +4,13 @@ import { useQuery } from 'react-query';
 
 import { buildAPIUrl, useAuthToken } from '../providers';
 
-export const useFetchQuote = ({ maxLength }: QuoteRequest = {}) => {
+export const useFetchQuote = ({ maxLength, tags }: QuoteRequest = {}) => {
   const { value } = useAuthToken();
   return useQuery<QuoteResponse>(['quote', value], async () => {
-    const url = qs.stringifyUrl(
-      {
-        url: buildAPIUrl('/quotes/random'),
-        query: { maxLength },
-      },
-      { arrayFormatSeparator: '|', arrayFormat: 'separator' },
-    );
+    const url = qs.stringifyUrl({
+      url: buildAPIUrl('/quotes/random'),
+      query: { maxLength, tags },
+    });
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${value}`,
