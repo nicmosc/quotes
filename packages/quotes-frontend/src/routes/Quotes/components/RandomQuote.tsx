@@ -1,20 +1,44 @@
 import { Shuffle } from '@phosphor-icons/react';
+import randomColor from 'randomcolor';
 import { Fragment } from 'react';
 import { Loading } from 'react-daisyui';
 
 import { useFetchQuote } from '../../../hooks';
 
+const generateRandomColorCombo = (seed?: string) => {
+  if (seed == null) {
+    // use default
+    return ['white', 'black'];
+  }
+  const foregroundColor = randomColor({
+    luminosity: 'light',
+    seed,
+  });
+  const backgroundColor = randomColor({
+    luminosity: 'dark',
+    seed,
+  });
+  return [foregroundColor, backgroundColor];
+};
+
 export const RandomQuote = () => {
   const { data, refetch, isLoading } = useFetchQuote({
     maxLength: 60,
   });
+
+  const [fg, bg] = generateRandomColorCombo(data?.data.id);
+
   return (
-    <div className="w-full h-full bg-teal-300 flex justify-center items-center flex-col p-10">
+    <div
+      style={{ backgroundColor: bg }}
+      className="w-full h-full flex justify-center items-center flex-col p-10">
       {isLoading ? (
         <Loading variant="infinity" size="lg" color="primary" />
       ) : (
         <Fragment>
-          <div className="prose text-[50px] leading-none font-serif text-center text-purple-600">
+          <div
+            style={{ color: fg }}
+            className="prose text-[50px] leading-none font-serif text-center">
             {data?.data.content}
           </div>
           <div className="my-5" />
