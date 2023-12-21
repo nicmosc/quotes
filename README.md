@@ -5,6 +5,18 @@ This repository is meant as an exercise to have a monorepo containing the follow
 - `@quotes/frontend`: contains the UI to display the data provided by the API, in this case a random quote
 - `@quotes/schema`: is the "contract" between the frontend and backend to ensure consistency with communication between BE and FE at the data layer. This package is shared between the two others
 
+The users are mocked at the service layer, so if you want to log in to use the app, you may use one of the following email/password combinations:
+```
+email: 'Aaliyah23@hotmail.com'
+password: 'F2EAFyTqHbR4Kt6
+
+email: 'Tatyana.Koch@yahoo.com'
+password: 'z3jmembRtsuoo1t'
+
+email: 'Helene.Williamson@yahoo.com'
+password: 'bbkpHh_hKk6KMwv'
+```
+
 ## Development
 First install dependencies via `npm install`.
 
