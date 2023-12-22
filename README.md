@@ -34,6 +34,11 @@ docker compose up
 ```
 which will install dependencies and start the monorepo, however Docker is also used to deploy this app to AWS, with the Docker image being run via EC2.
 
+### Building the images for production
+```
+docker build . -t [quotes-frontend/quotes-backend] -f ./packages/[context]/Dockerfile
+```
+
 ## Todo
-- [ ] CI/CD pipelines (run linting/ts-check, tests, build & deploy to AWS)
+- [ ] CI/CD pipelines (run linting/ts-check, tests, build & deploy to AWS via Terraform)
 - [ ] Frontend E2E tests (using Cypress for e.g.)
