@@ -22,9 +22,15 @@ First install dependencies via `npm install`.
 
 To start the monorepo, simply run `npm start`, this will launch both backend and frontend packages, using a NestJS server and Vite bundler respectively.
 
+You can then view the frontend on `http://localhost:4000` and the backend on `http://localhost:3000`.
+
 The backend also includes E2E tests for its API which can be run using `npm run test:backend`.
 
-You may also start the whole stack using `docker compose up`, which will install dependencies and start the monorepo, however Docker is also used to deploy this app to AWS, with the Docker image being run via EC2.
+You may also start the whole stack for __production__ using
+```
+docker compose up
+```
+which will install dependencies and start the monorepo, however Docker is also used to deploy this app to AWS, with the Docker image being run via EC2.
 
 ## Todo
 - [ ] CI/CD pipelines (run linting/ts-check, tests, build & deploy to AWS)

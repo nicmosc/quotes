@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./packages/quotes-backend/Dockerfile
+      args:
+        - PORT=3000
+        - QUOTES_SERVICE_URL=https://api.quotable.io
+    image: quotes/backend:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - QUOTES_SERVICE_URL=https://api.quotable.io
+
+  frontend:
+    build:
+      dockerfile: ./packages/quotes-frontend/Dockerfile
+      args:
+        - API_URL=http://localhost:3000
+    image: quotes/frontend:latest
+    ports:
+      - "4000:4000"
+    environment:
+      - API_URL=http://localhost:3000

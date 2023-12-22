@@ -26,6 +26,7 @@ export class AuthService {
     if (existingUser != null) {
       const payload = { email: user.email, sub: user.password };
       return {
+        // TODO return refreshToken as well
         token: this.jwtService.sign(payload),
       };
     } else {
