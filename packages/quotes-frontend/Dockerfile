@@ -10,8 +10,8 @@ COPY tsconfig.base.json .
 
 RUN corepack enable
 
-ARG API_URL=
-ENV API_URL=${API_URL}
+ARG VITE_API_URL
+ENV API_URL=${VITE_API_URL}
 
 EXPOSE 4000
 

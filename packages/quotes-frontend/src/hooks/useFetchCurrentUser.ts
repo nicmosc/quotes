@@ -7,10 +7,11 @@ const ONE_HOUR = 60 * 1000 * 60;
 
 export const useFetchCurrentUser = () => {
   const { value } = useAuthToken();
+  const url = buildAPIUrl('/users/me');
   return useQuery<UserResponse>(
     ['currentUser', value],
     async () => {
-      const response = await fetch(buildAPIUrl('/users/me'), {
+      const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${value}`,
         },

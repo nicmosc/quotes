@@ -2,8 +2,6 @@ import { PropsWithChildren } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import urlJoin from 'url-join';
 
-const API_URL = process.env.API_URL;
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -15,7 +13,7 @@ const queryClient = new QueryClient({
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const buildAPIUrl = (target: string) => {
-  return urlJoin(API_URL, target);
+  return urlJoin(import.meta.env.VITE_API_URL, target);
 };
 
 export const NetworkProvider = ({ children }: PropsWithChildren) => {

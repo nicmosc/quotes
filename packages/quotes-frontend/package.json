@@ -6,8 +6,8 @@
     "scripts": {
         "start": "vite --port 4000",
         "build": "vite build",
-        "preview": "vite preview",
-        "serve": "npx http-server ./dist --port 4000"
+        "preview": "vite preview --port 4000 --host",
+        "serve": "npm run preview"
     },
     "dependencies": {
         "@phosphor-icons/react": "^2.0.15",
