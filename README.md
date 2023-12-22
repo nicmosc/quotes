@@ -1,5 +1,3 @@
-# Quotes
-
 This repository is meant as an exercise to have a monorepo containing the following packages:
 - `@quotes/backend`: contains all of the backend API logic (uses the [Quotable](https://github.com/lukePeavey/quotable) API internally), also includes authentication
 - `@quotes/frontend`: contains the UI to display the data provided by the API, in this case a random quote
@@ -16,6 +14,10 @@ password: 'z3jmembRtsuoo1t'
 email: 'Helene.Williamson@yahoo.com'
 password: 'bbkpHh_hKk6KMwv'
 ```
+
+<img width="300" alt="image" src="https://github.com/nicmosc/quotes/assets/16778318/6ff2e677-dbdd-4576-af5a-92d041f8cc14">
+<img width="300" alt="image" src="https://github.com/nicmosc/quotes/assets/16778318/f797c9a5-b995-49e0-b0f7-55f0ae721001">
+<img width="300" alt="image" src="https://github.com/nicmosc/quotes/assets/16778318/55482305-fc9e-437a-9d1a-1b413f5706b7">
 
 ## Development
 First install dependencies via `npm install`.
